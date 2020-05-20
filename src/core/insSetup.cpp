@@ -293,6 +293,10 @@ ins_t *insSetup(MPI_Comm comm, setupAide &options, int buildOnly)
 
   ins->velTOL  = 1E-6;
   ins->uvwSolver = NULL;
+
+  if(options.compareArgs("STRESSFORMULATION", "TRUE"))
+    options.setArgs("VELOCITY BLOCK SOLVER", "TRUE");
+
   if(options.compareArgs("VELOCITY BLOCK SOLVER", "TRUE"))
     ins->uvwSolver = new elliptic_t();
 
@@ -331,6 +335,8 @@ ins_t *insSetup(MPI_Comm comm, setupAide &options, int buildOnly)
 
   if(ins->uvwSolver){
     ins->uvwSolver->blockSolver = 1;
+    ins->uvwSolver->stressForm = 0;
+    if(options.compareArgs("STRESSFORMULATION", "TRUE")) ins->uvwSolver->stressForm = 1;
     ins->uvwSolver->Nfields = ins->NVfields; 
     ins->uvwSolver->Ntotal = ins->fieldOffset;
     ins->uvwSolver->wrk = scratch + ins->ellipticWrkOffset; 

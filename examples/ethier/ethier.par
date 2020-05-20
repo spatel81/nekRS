@@ -13,6 +13,9 @@ timeStepper = tombo2
 writeControl = runTime
 writeInterval = 0.1
 
+[PROBLEMTYPE]
+#stressFormulation = true
+
 [PRESSURE]
 preconditioner = semg_amg
 #amgSolver = parAlmond
