@@ -7,6 +7,10 @@
 
 **nekRS** is an open-source Navier Stokes solver based on the spectral element method targeting modern processors and accelerators. The code uses the [CEED](https://ceed.exascaleproject.org/) software products [OCCA](https://github.com/libocca/occa) and [libParanumal](https://github.com/paranumal/libparanumal).
 
+## Development Notes
+
+This fork is for developing and testing moving mesh capabilities within nekRS
+
 Capabilities:
 
 * Incompressible and low Mach-number Navier-Stokes + scalar transport 
